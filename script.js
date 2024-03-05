@@ -17,6 +17,6 @@ var locations = [
 ];
 
 locations.forEach(function(location) {
-    var marker = L.marker([location.coords[1], location.coords[0]]).addTo(map); // Beachte die Reihenfolge der Koordinaten
+    var marker = L.marker(map.unproject([location.coords[0], location.coords[1]], map.getMaxZoom())).addTo(map);
     marker.bindPopup(location.description).openPopup();
 });
