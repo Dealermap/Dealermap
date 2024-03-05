@@ -11,7 +11,7 @@ map.fitBounds(bounds);
 
 // Event-Listener für das Klicken auf die Karte hinzufügen
 map.on('click', function(event) {
-    var latlng = map.mouseEventToLatLng(event.originalEvent);
+    var latlng = map.mouseEventToLatLng(event.latlng);
     var marker = L.marker(latlng).addTo(map);
     marker.bindPopup("Neuer Marker").openPopup();
 });
