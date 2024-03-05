@@ -11,12 +11,12 @@ map.fitBounds(bounds);
 
 // Add markers with descriptions
 var locations = [
-    { coords: [5292, 3233], description: "Los Santos International Airport" },
+    { coords: [3233, 5292], description: "Los Santos International Airport" },
     { coords: [3058, 5526], description: "Del Perro Beach" },
     // Add more locations as needed
 ];
 
 locations.forEach(function(location) {
-    var marker = L.marker(map.unproject(location.coords, map.getMaxZoom())).addTo(map);
+    var marker = L.marker([location.coords[1], location.coords[0]]).addTo(map); // Beachte die Reihenfolge der Koordinaten
     marker.bindPopup(location.description).openPopup();
 });
