@@ -7,9 +7,8 @@
     <link rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.css"/>
     <style>
         #map {
-            height: 900px; /* Erhöhe die Höhe des Kartencontainers auf 900px */
+            height: 600px;
             width: 100%;
-            margin-bottom: 20px;
         }
     </style>
 </head>
@@ -18,7 +17,24 @@
 <div id="map"></div>
 
 <script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
-<script src="script.js"></script>
+<script>
+    var map = L.map('map', {
+        crs: L.CRS.Simple,
+        minZoom: -5
+    });
+
+    var bounds = [[0, 0], [8192, 8192]]; // Bildgröße
+
+    L.imageOverlay('https://www.gtavision.com/images/content/gtav/maps/grand-theft-auto-v_karte-satellit_hq.jpg', bounds).addTo(map);
+
+    map.fitBounds(bounds);
+
+    // Event-Listener für das Klicken auf die Karte hinzufügen
+    map.on('click', function(event) {
+        var latlng = map.mouseEventToLatLng(event.latlng);
+        L.marker(latlng).addTo(map);
+    });
+</script>
 
 </body>
 </html>
