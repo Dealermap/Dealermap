@@ -9,14 +9,14 @@ L.imageOverlay('https://www.gtavision.com/images/content/gtav/maps/grand-theft-a
 
 map.fitBounds(bounds);
 
-// Add markers for different locations
+// Add markers with descriptions
 var locations = [
-    { name: "Hehler Rockford", coords: [3233, 5292] },
-    { name: "Del Perro Beach", coords: [570, 520] },
+    { coords: [873, 992], description: "Los Santos International Airport" },
+    { coords: [570, 520], description: "Del Perro Beach" },
     // Add more locations as needed
 ];
 
 locations.forEach(function(location) {
     var marker = L.marker(map.unproject(location.coords, map.getMaxZoom())).addTo(map);
-    marker.bindPopup(location.name).openPopup();
+    marker.bindPopup(location.description).openPopup();
 });
