@@ -11,8 +11,8 @@ map.fitBounds(bounds);
 
 // Add markers with descriptions
 var locations = [
-    { coords: [873, 992], description: "Los Santos International Airport" },
-    { coords: [570, 520], description: "Del Perro Beach" },
+    { coords: [3233, 5292], description: "Hehler Rockford" },
+    { coords: [3058, 5526], description: "Dealer Golfplatzbrücke" },
     // Add more locations as needed
 ];
 
