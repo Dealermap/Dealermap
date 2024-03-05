@@ -29,13 +29,11 @@
 
     map.fitBounds(bounds);
 
-    // Event-Listener für das Mittel-Klicken auf die Karte hinzufügen
-    map.on('mousedown', function(event) {
-        if (event.originalEvent.button === 1) { // Überprüfen, ob es ein Mittel-Klick ist
-            var latlng = map.mouseEventToLatLng(event.latlng);
-            var marker = L.marker(latlng, { draggable: true }).addTo(map);
-            marker.bindPopup("<input type='text' id='popup-input' placeholder='Beschriftung'><button onclick='updateMarkerPopup(this, \"" + marker._leaflet_id + "\")'>Speichern</button>").openPopup();
-        }
+    // Event-Listener für das Klicken auf die Karte hinzufügen
+    map.on('click', function(event) {
+        var latlng = map.mouseEventToLatLng(event.latlng);
+        var marker = L.marker(latlng, { draggable: true }).addTo(map);
+        marker.bindPopup("<input type='text' id='popup-input' placeholder='Beschriftung'><button onclick='updateMarkerPopup(this, \"" + marker._leaflet_id + "\")'>Speichern</button>").openPopup();
     });
 
     // Funktion zum Aktualisieren des Popup-Inhalts
