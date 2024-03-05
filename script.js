@@ -9,14 +9,9 @@ L.imageOverlay('https://www.gtavision.com/images/content/gtav/maps/grand-theft-a
 
 map.fitBounds(bounds);
 
-// Markierungen mit Beschreibungen hinzufügen
-var locations = [
-    { coords: [3233, 5292], description: "Los Santos International Airport" },
-    { coords: [3058, 5526], description: "Del Perro Beach" },
-    // Weitere Orte hinzufügen
-];
-
-locations.forEach(function(location) {
-    var marker = L.marker(location.coords).addTo(map);
-    marker.bindPopup(location.description).openPopup();
+// Event-Listener für das Klicken auf die Karte hinzufügen
+map.on('click', function(event) {
+    var latlng = map.mouseEventToLatLng(event.originalEvent);
+    var marker = L.marker(latlng).addTo(map);
+    marker.bindPopup("Neuer Marker").openPopup();
 });
